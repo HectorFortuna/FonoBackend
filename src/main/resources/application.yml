@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: FonoBackend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/register_db
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        ddl-auto: update
+        show-sql: true
+
+    server:
+      port: 8080
+
+    logging:
+      level:
+        org.springframework: INFO
+        com.hectorfortuna.fonoBack: DEBUG
