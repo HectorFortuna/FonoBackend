@@ -15,7 +15,7 @@ public class RegisterModel {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String patientName;
-    private Long birthDate;
+    private String birthDate;
     private String patientAge;
     private String fatherName;
     private String motherName;
@@ -26,7 +26,7 @@ public class RegisterModel {
     public RegisterModel() {
     }
 
-    public RegisterModel(String patientName, Long birthDate, String patientAge, String fatherName, String motherName, String career, String address, String phone) {
+    public RegisterModel(String patientName, String birthDate, String patientAge, String fatherName, String motherName, String career, String address, String phone) {
         this.patientName = patientName;
         this.birthDate = birthDate;
         this.patientAge = patientAge;
@@ -45,19 +45,16 @@ public class RegisterModel {
         this.id = id;
     }
 
-    public String getPatientName() {
-        return patientName;
-    }
 
     public void setPatientName(String patientName) {
         this.patientName = patientName;
     }
 
-    public Long getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Long birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
