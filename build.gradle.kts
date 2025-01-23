@@ -1,5 +1,6 @@
 plugins {
 	java
+	jacoco
 	id("org.springframework.boot") version "3.4.1"
 	id("io.spring.dependency-management") version "1.1.7"
 }
@@ -34,9 +35,36 @@ dependencies {
 	runtimeOnly("com.h2database:h2")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	finalizedBy(tasks.jacocoTestReport)
 }
+
+tasks {
+	getByName<JacocoReport>("jacocoTestReport") {
+		reports {
+			xml.required.set(true)
+			html.required.set(true)
+		}
+		afterEvaluate {
+			classDirectories = files(classDirectories.files.map {
+				fileTree(it) {
+					include("com/hectorfortuna/fonoBack/FonoBackend/controller/**","com/hectorfortuna/fonoBack/FonoBackend/repository/**")
+				}
+			})
+		}
+	}
+}
+
+//tasks.jacocoTestReport {
+//	dependsOn(tasks.test)
+//	reports {
+//		xml.required.set(true)
+//		html.required.set(true)
+//	}
+//}
