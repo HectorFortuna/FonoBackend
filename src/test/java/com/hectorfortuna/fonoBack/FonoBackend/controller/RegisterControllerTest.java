@@ -31,6 +31,7 @@ class RegisterControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
     @MockitoBean
     private RegisterRepository registerRepository;
 
@@ -38,13 +39,13 @@ class RegisterControllerTest {
 
     @BeforeEach
     public void setup() {
-        UUID fixedId = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");  // Exemplo de UUID fixo
+        UUID fixedId = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");
 
         register = new RegisterModel("Name", "01/01/1990", "31", "Father Name", "Mother Name", "Career", "Address", "123456789");
         register.setId(fixedId);
 
         Mockito.when(registerRepository.save(Mockito.any(RegisterModel.class))).thenReturn(register);
-        Mockito.when(registerRepository.findById(fixedId)).thenReturn(Optional.of(register));  // Mock para encontrar pelo ID fixo
+        Mockito.when(registerRepository.findById(fixedId)).thenReturn(Optional.of(register));
         Mockito.when(registerRepository.existsById(fixedId)).thenReturn(true);
     }
 
