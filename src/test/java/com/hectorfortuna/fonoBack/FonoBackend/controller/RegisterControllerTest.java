@@ -6,11 +6,19 @@ import com.hectorfortuna.fonoBack.FonoBackend.repository.RegisterRepository;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -23,19 +31,27 @@ class RegisterControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
+    @MockitoBean
     private RegisterRepository registerRepository;
 
     private RegisterModel register;
 
     @BeforeEach
     public void setup() {
+        UUID fixedId = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");  // Exemplo de UUID fixo
+
         register = new RegisterModel("Name", "01/01/1990", "31", "Father Name", "Mother Name", "Career", "Address", "123456789");
-        registerRepository.save(register);
+        register.setId(fixedId);
+
+        Mockito.when(registerRepository.save(Mockito.any(RegisterModel.class))).thenReturn(register);
+        Mockito.when(registerRepository.findById(fixedId)).thenReturn(Optional.of(register));  // Mock para encontrar pelo ID fixo
+        Mockito.when(registerRepository.existsById(fixedId)).thenReturn(true);
     }
 
     @Test
     public void shouldReturnAllRegisterSuccessfully() throws Exception {
+        Mockito.when(registerRepository.findAll()).thenReturn(List.of(register));
+
         mockMvc.perform(get("/api/register"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(Matchers.greaterThan(0)));
@@ -44,17 +60,23 @@ class RegisterControllerTest {
     @Test
     public void shouldCreateRegisterSuccessfully() throws Exception{
         RegisterModel newRegister = new RegisterModel("New Name", "02/02/1985", "45", "Father New", "Mother New", "Engineer", "New Address", "987654321");
+        newRegister.setId(UUID.randomUUID());
+
+        Mockito.when(registerRepository.save(Mockito.any(RegisterModel.class))).thenReturn(newRegister);
+
         mockMvc.perform(post("/api/register")
                         .contentType("application/json")
                         .content(new ObjectMapper().writeValueAsString(newRegister)))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists());
-
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.id").isNotEmpty());
     }
+
 
     @Test
     public void shouldReturnRegisterByIdSuccessfully() throws Exception {
         UUID validId = register.getId();
+
         mockMvc.perform(get("/api/register/{id}", validId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(validId.toString()));
