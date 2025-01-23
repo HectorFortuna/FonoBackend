@@ -38,4 +38,25 @@ public class RegisterController {
         RegisterModel byId = registerRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Register not found with id" + id));
         return ResponseEntity.ok(byId);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<RegisterModel> putRegister(@RequestBody RegisterModel registerModel, @PathVariable UUID id){
+        if(!registerRepository.existsById(id)){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        registerModel.setId(id);
+        registerRepository.save(registerModel);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<RegisterModel> deleteRegister(@PathVariable UUID id){
+        if(!registerRepository.existsById(id)){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        registerRepository.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

@@ -50,6 +50,10 @@ public class RegisterModel {
         this.patientName = patientName;
     }
 
+    public String getPatientName() {
+        return patientName;
+    }
+
     public String getBirthDate() {
         return birthDate;
     }
