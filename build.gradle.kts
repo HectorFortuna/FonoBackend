@@ -54,7 +54,10 @@ tasks {
 		afterEvaluate {
 			classDirectories = files(classDirectories.files.map {
 				fileTree(it) {
-					include("com/hectorfortuna/fonoBack/FonoBackend/controller/**","com/hectorfortuna/fonoBack/FonoBackend/repository/**")
+					include(
+						"com/hectorfortuna/fonoBack/FonoBackend/controller/**",
+						"com/hectorfortuna/fonoBack/FonoBackend/service/**"
+					)
 				}
 			})
 		}

@@ -5,7 +5,6 @@ import com.hectorfortuna.fonoBack.FonoBackend.model.evaluation.Evaluation;
 import com.hectorfortuna.fonoBack.FonoBackend.model.patient.Patient;
 import com.hectorfortuna.fonoBack.FonoBackend.repository.evaluation.EvaluationRepository;
 import com.hectorfortuna.fonoBack.FonoBackend.repository.patient.PatientRepository;
-import com.hectorfortuna.fonoBack.FonoBackend.repository.patientevaluation.PatientEvaluationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +19,6 @@ public class EvaluationService {
 
     private final EvaluationRepository evaluationRepository;
     private final PatientRepository patientRepository;
-    private final PatientEvaluationRepository patientEvaluationRepository;
     private final com.hectorfortuna.fonoBack.FonoBackend.mapper.EvaluationMapper evaluationMapper;
 
     @Transactional(readOnly = true)
