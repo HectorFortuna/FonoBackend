@@ -35,13 +35,13 @@ public class PathologicalHistory {
     private Boolean fallsOrBlows;
 
     @Column(name = "psychosomatic_disorders")
-    private Boolean psychosomaticDisorders;
+    private String psychosomaticDisorders;
 
     @Column(name = "tonsils_and_adenoids")
     private Boolean tonsilsAndAdenoids;
 
     @Column(name = "operations_done")
-    private Boolean operationsDone;
+    private String operationsDone;
 
     @Column(name = "sees_well")
     private Boolean seesWell;
@@ -86,7 +86,7 @@ public class PathologicalHistory {
     private String howToUnderstand;
 
     @Column(name = "attended_therapy")
-    private Boolean attendedTherapy;
+    private String attendedTherapy;
 
     @Column(name = "observations", length = 255)
     private String observations;

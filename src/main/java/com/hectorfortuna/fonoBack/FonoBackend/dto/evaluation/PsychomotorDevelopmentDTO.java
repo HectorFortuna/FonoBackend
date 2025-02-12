@@ -13,8 +13,9 @@ public class PsychomotorDevelopmentDTO {
     private String floppyOrFirmBaby;
     private String fallingFrequency;
     private String grabbedObjectsAge;
+    private String canJump;
     private String walkingDefects;
-    private Boolean goodDirectionSense;
+    private String goodDirectionSense;
     private Boolean analAndNocturnalSphincterControl;
     private Boolean bumpsIntoThings;
     private Boolean dropsThingsFromHands;

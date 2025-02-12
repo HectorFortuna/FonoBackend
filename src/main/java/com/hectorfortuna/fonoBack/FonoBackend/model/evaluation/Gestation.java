@@ -29,13 +29,13 @@ public class Gestation {
     private Boolean prenatalTreatment;
 
     @Column(name = "accidents")
-    private Boolean accidents;
+    private String accidents;
 
     @Column(name = "diseases_during_pregnancy")
-    private Boolean diseasesDuringPregnancy;
+    private String diseasesDuringPregnancy;
 
     @Column(name = "medications_during_pregnancy")
-    private Boolean medicationsDuringPregnancy;
+    private String medicationsDuringPregnancy;
 
     @Column(name = "hypotension")
     private Boolean hypotension;
@@ -63,6 +63,9 @@ public class Gestation {
 
     @Column(name = "birth_weight", length = 255)
     private String birthWeight;
+
+    @Column(name = "birth_height", length = 255)
+    private String birthHeight;
 
     @Column(name = "cried")
     private Boolean cried;

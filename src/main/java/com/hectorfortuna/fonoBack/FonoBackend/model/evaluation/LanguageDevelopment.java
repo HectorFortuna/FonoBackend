@@ -3,6 +3,7 @@ package com.hectorfortuna.fonoBack.FonoBackend.model.evaluation;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.awt.datatransfer.StringSelection;
 import java.util.UUID;
 
 @Entity
@@ -23,13 +24,13 @@ public class LanguageDevelopment {
     private String babbled;
 
     @Column(name = "syllable_repetition")
-    private Boolean syllableRepetition;
+    private String syllableRepetition;
 
     @Column(name = "words_with_meaning")
-    private Boolean wordsWithMeaning;
+    private String wordsWithMeaning;
 
     @Column(name = "simple_complete_sentences")
-    private Boolean simpleCompleteSentences;
+    private String simpleCompleteSentences;
 
     @Column(name = "understood_by_all_when", length = 255)
     private String understoodByAllWhen;

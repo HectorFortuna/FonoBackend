@@ -9,9 +9,9 @@ public class GestationDTO {
     private String gestationDuration;
     private String motherAge;
     private Boolean prenatalTreatment;
-    private Boolean accidents;
-    private Boolean diseasesDuringPregnancy;
-    private Boolean medicationsDuringPregnancy;
+    private String accidents;
+    private String diseasesDuringPregnancy;
+    private String medicationsDuringPregnancy;
     private Boolean hypotension;
     private Boolean hypertension;
     private Boolean anemia;
@@ -21,6 +21,7 @@ public class GestationDTO {
     private Boolean cesareanDelivery;
     private Boolean anesthesia;
     private String birthWeight;
+    private String birthHeight;
     private Boolean cried;
     private Boolean cyanosis;
     private String observations;

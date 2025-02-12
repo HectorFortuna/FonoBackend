@@ -7,9 +7,9 @@ import lombok.Data;
 @Builder
 public class LanguageDevelopmentDTO {
     private String babbled;
-    private Boolean syllableRepetition;
-    private Boolean wordsWithMeaning;
-    private Boolean simpleCompleteSentences;
+    private String syllableRepetition;
+    private String wordsWithMeaning;
+    private String simpleCompleteSentences;
     private String understoodByAllWhen;
     private String stutteredAround;
     private Boolean understandsCommands;

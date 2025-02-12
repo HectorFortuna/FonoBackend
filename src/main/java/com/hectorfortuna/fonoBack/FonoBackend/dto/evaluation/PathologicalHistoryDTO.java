@@ -11,7 +11,7 @@ public class PathologicalHistoryDTO {
     private Boolean smallpox;
     private Boolean highFever;
     private Boolean fallsOrBlows;
-    private Boolean psychosomaticDisorders;
+    private String psychosomaticDisorders;
     private Boolean tonsilsAndAdenoids;
     private Boolean operationsDone;
     private Boolean seesWell;
@@ -28,6 +28,6 @@ public class PathologicalHistoryDTO {
     private Boolean understandsWell;
     private Boolean looksAtLipsWhenListening;
     private String howToUnderstand;
-    private Boolean attendedTherapy;
+    private String attendedTherapy;
     private String observations;
 }

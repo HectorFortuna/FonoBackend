@@ -21,6 +21,21 @@ public class Address {
     @Column(name = "id_address", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "address", length = 255)
-    private String address;
+    @Column(name = "street", length = 255)
+    private String street;
+
+    @Column(name = "number", length = 255)
+    private String number;
+
+    @Column(name = "neighborhood", length = 255)
+    private String neighborhood;
+
+    @Column(name = "city", length = 255)
+    private String city;
+
+    @Column(name = "state", length = 255)
+    private String state;
+
+    @Column(name = "cep", length = 255)
+    private String cep;
 }
