@@ -13,7 +13,7 @@ public class PathologicalHistoryDTO {
     private Boolean fallsOrBlows;
     private String psychosomaticDisorders;
     private Boolean tonsilsAndAdenoids;
-    private Boolean operationsDone;
+    private String operationsDone;
     private Boolean seesWell;
     private Boolean wearsGlasses;
     private String optometristReason;

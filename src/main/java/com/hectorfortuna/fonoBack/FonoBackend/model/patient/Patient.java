@@ -1,5 +1,6 @@
 package com.hectorfortuna.fonoBack.FonoBackend.model.patient;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hectorfortuna.fonoBack.FonoBackend.model.patientevaluation.PatientEvaluation;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -26,13 +27,13 @@ public class Patient {
     @Column(name = "id_patient", nullable = false, updatable = false)
     private UUID id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "siblings_id")
-    private Siblings siblings;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "patient_id") // Nome da coluna que vai associar os endereços com o paciente
+    private List<Address> address; // Agora é uma lista de endereços
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "patient_id") // Nome da coluna que vai associar os irmãos com o paciente
+    private List<Siblings> siblings;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PatientEvaluation> evaluations = new ArrayList<>();

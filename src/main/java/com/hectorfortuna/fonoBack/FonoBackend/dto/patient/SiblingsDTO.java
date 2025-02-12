@@ -6,5 +6,6 @@ import lombok.Data;
 @Data
 @Builder
 public class SiblingsDTO {
+    private String siblingsName;
     private String siblingsAge;
 }

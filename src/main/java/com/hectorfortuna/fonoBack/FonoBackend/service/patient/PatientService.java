@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -47,19 +48,9 @@ public class PatientService {
      */
     @Transactional
     public PatientDTO createPatient(PatientDTO patientDTO) {
-        // Convertendo DTOs para entidades
-        Siblings siblings = Siblings.builder()
-                .siblingsAge(patientDTO.getSiblings().getSiblingsAge())
-                .build();
-
-        Address address = Address.builder()
-                .address(patientDTO.getAddress().getAddress())
-                .build();
-
-        // Criando o Patient com as entidades criadas
+        // Criação de um novo objeto Patient com base no PatientDTO
         Patient patient = Patient.builder()
-                .siblings(siblings)
-                .address(address)
+                .id(patientDTO.getId())
                 .patientName(patientDTO.getPatientName())
                 .fatherName(patientDTO.getFatherName())
                 .motherName(patientDTO.getMotherName())
@@ -69,9 +60,69 @@ public class PatientService {
                 .career(patientDTO.getCareer())
                 .build();
 
+        // Se a lista de irmãos não for nula nem vazia, adiciona os Siblings
+        if (patientDTO.getSiblings() != null && !patientDTO.getSiblings().isEmpty()) {
+            List<Siblings> siblingsList = patientDTO.getSiblings().stream()
+                    .map(siblingDTO -> Siblings.builder()
+                            .siblingsName(siblingDTO.getSiblingsName())
+                            .siblingsAge(siblingDTO.getSiblingsAge())
+                            .build())
+                    .collect(Collectors.toList());
+            patient.setSiblings(siblingsList);
+        } else {
+            patient.setSiblings(new ArrayList<>());  // Garantir que a lista de irmãos não seja null
+        }
+
+        // Se a lista de endereços não for nula nem vazia, adiciona os Addresses
+        if (patientDTO.getAddress() != null && !patientDTO.getAddress().isEmpty()) {
+            List<Address> addressList = patientDTO.getAddress().stream()
+                    .map(addressDTO -> Address.builder()
+                            .street(addressDTO.getStreet())
+                            .number(addressDTO.getNumber())
+                            .neighborhood(addressDTO.getNeighborhood())
+                            .city(addressDTO.getCity())
+                            .state(addressDTO.getState())
+                            .cep(addressDTO.getCep())
+                            .build())
+                    .collect(Collectors.toList());
+            patient.setAddress(addressList);
+        } else {
+            patient.setAddress(new ArrayList<>());  // Garantir que a lista de endereços não seja null
+        }
+
+        // Salva o paciente no banco de dados
         patient = patientRepository.save(patient);
-        return convertToDTO(patient);
+
+        // Retorna o PatientDTO com os dados do paciente criado
+        return PatientDTO.builder()
+                .id(patient.getId())
+                .patientName(patient.getPatientName())
+                .fatherName(patient.getFatherName())
+                .motherName(patient.getMotherName())
+                .birthDate(patient.getBirthDate())
+                .patientAge(patient.getPatientAge())
+                .phoneNumber(patient.getPhoneNumber())
+                .career(patient.getCareer())
+                .siblings(patient.getSiblings().stream()
+                        .map(sibling -> SiblingsDTO.builder()
+                                .siblingsName(sibling.getSiblingsName())
+                                .siblingsAge(sibling.getSiblingsAge())
+                                .build())
+                        .collect(Collectors.toList()))
+                .address(patient.getAddress().stream()
+                        .map(address -> AddressDTO.builder()
+                                .street(address.getStreet())
+                                .number(address.getNumber())
+                                .neighborhood(address.getNeighborhood())
+                                .city(address.getCity())
+                                .state(address.getState())
+                                .cep(address.getCep())
+                                .build())
+                        .collect(Collectors.toList()))
+                .build();
     }
+
+
 
     /**
      * Atualiza um paciente existente
@@ -82,8 +133,24 @@ public class PatientService {
                 .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
 
         // Atualizando os valores existentes
-        patient.getSiblings().setSiblingsAge(patientDTO.getSiblings().getSiblingsAge());
-        patient.getAddress().setAddress(patientDTO.getAddress().getAddress());
+        patient.setSiblings(patientDTO.getSiblings().stream()
+                .map(siblingDTO -> Siblings.builder()
+                        .siblingsName(siblingDTO.getSiblingsName())
+                        .siblingsAge(siblingDTO.getSiblingsAge())
+                        .build())
+                .collect(Collectors.toList()));
+
+        patient.setAddress(patientDTO.getAddress().stream()
+                .map(addressDTO -> Address.builder()
+                        .street(addressDTO.getStreet())
+                        .number(addressDTO.getNumber())
+                        .neighborhood(addressDTO.getNeighborhood())
+                        .city(addressDTO.getCity())
+                        .state(addressDTO.getState())
+                        .cep(addressDTO.getCep())
+                        .build())
+                .collect(Collectors.toList()));
+
         patient.setPatientName(patientDTO.getPatientName());
         patient.setFatherName(patientDTO.getFatherName());
         patient.setMotherName(patientDTO.getMotherName());
@@ -120,12 +187,22 @@ public class PatientService {
                 .patientAge(patient.getPatientAge())
                 .phoneNumber(patient.getPhoneNumber())
                 .career(patient.getCareer())
-                .siblings(SiblingsDTO.builder()
-                        .siblingsAge(patient.getSiblings().getSiblingsAge())
-                        .build())
-                .address(AddressDTO.builder()
-                        .address(patient.getAddress().getAddress())
-                        .build())
+                .siblings(patient.getSiblings().stream()
+                        .map(sibling -> SiblingsDTO.builder()
+                                .siblingsName(sibling.getSiblingsName())
+                                .siblingsAge(sibling.getSiblingsAge())
+                                .build())
+                        .collect(Collectors.toList()))
+                .address(patient.getAddress().stream()
+                        .map(address -> AddressDTO.builder()
+                                .street(address.getStreet())
+                                .number(address.getNumber())
+                                .neighborhood(address.getNeighborhood())
+                                .city(address.getCity())
+                                .state(address.getState())
+                                .cep(address.getCep())
+                                .build())
+                        .collect(Collectors.toList()))
                 .build();
     }
 }

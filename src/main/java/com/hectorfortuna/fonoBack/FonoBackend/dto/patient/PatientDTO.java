@@ -3,6 +3,7 @@ package com.hectorfortuna.fonoBack.FonoBackend.dto.patient;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -16,6 +17,6 @@ public class PatientDTO {
     private String patientAge;
     private String phoneNumber;
     private String career;
-    private SiblingsDTO siblings;
-    private AddressDTO address;
+    private List<SiblingsDTO> siblings;
+    private List<AddressDTO> address;
 }

@@ -4,12 +4,9 @@ import com.hectorfortuna.fonoBack.FonoBackend.dto.patient.PatientDTO;
 import com.hectorfortuna.fonoBack.FonoBackend.model.patient.Patient;
 import org.springframework.stereotype.Component;
 
-@Component  // 🔥 Faz com que o Spring gerencie essa classe como Bean
+@Component
 public class PatientMapper {
 
-    /**
-     * Converte uma entidade Patient para PatientDTO.
-     */
     public PatientDTO convertToDTO(Patient patient) {
         return PatientDTO.builder()
                 .id(patient.getId())  // 🔥 Inclui o ID gerado automaticamente
@@ -22,9 +19,6 @@ public class PatientMapper {
                 .build();
     }
 
-    /**
-     * Converte um DTO PatientDTO para entidade Patient.
-     */
     public Patient convertToEntity(PatientDTO patientDTO) {
         return Patient.builder()
                 .patientName(patientDTO.getPatientName())
