@@ -17,25 +17,29 @@ import java.util.UUID;
 public class Address {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO) // Garante que o banco gere o ID
     @Column(name = "id_address", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "street", length = 255)
+    @Column(name = "street", nullable = false)
     private String street;
 
-    @Column(name = "number", length = 255)
+    @Column(name = "number", nullable = false)
     private String number;
 
-    @Column(name = "neighborhood", length = 255)
+    @Column(name = "neighborhood", nullable = false)
     private String neighborhood;
 
-    @Column(name = "city", length = 255)
+    @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "state", length = 255)
+    @Column(name = "state", nullable = false)
     private String state;
 
-    @Column(name = "cep", length = 255)
+    @Column(name = "cep", nullable = false)
     private String cep;
+
+    @ManyToOne // ⬅️ Relacionamento correto
+    @JoinColumn(name = "patient_id", nullable = false) // ⬅️ Garante que cada endereço pertence a um paciente
+    private Patient patient;
 }

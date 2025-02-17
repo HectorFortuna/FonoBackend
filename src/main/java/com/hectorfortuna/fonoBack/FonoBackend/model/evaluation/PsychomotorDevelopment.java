@@ -40,8 +40,8 @@ public class PsychomotorDevelopment {
     @Column(name = "grabbed_objects_age", length = 255)
     private String grabbedObjectsAge;
 
-    @Column(name = "can_jump", length = 255)
-    private String canJump;
+    @Column(name = "can_jump")
+    private Boolean canJump;
 
     @Column(name = "walking_defects", length = 255)
     private String walkingDefects;

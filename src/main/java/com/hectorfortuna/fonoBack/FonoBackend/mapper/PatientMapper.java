@@ -15,6 +15,7 @@ public class PatientMapper {
                 .motherName(patient.getMotherName())
                 .birthDate(patient.getBirthDate())
                 .patientAge(patient.getPatientAge())
+                .school(patient.getSchool())
                 .phoneNumber(patient.getPhoneNumber())
                 .build();
     }

@@ -152,7 +152,37 @@ class EvaluationServiceTest {
     @Test
     void shouldUpdateEvaluation() {
         when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.of(evaluation));
-        when(evaluationRepository.save(any(Evaluation.class))).thenReturn(evaluation);
+        when(evaluationRepository.save(any(Evaluation.class))).thenReturn(evaluation);est
+        void shouldThrowExceptionWhenUpdatingNonExistentEvaluation() {
+            when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.empty());
+
+            Exception exception = assertThrows(RuntimeException.class, () -> evaluationService.updateEvaluation(evaluationId, evaluationDTO));
+
+            assertEquals("Evaluation not found with id: " + evaluationId, exception.getMessage());
+            verify(evaluationRepository, times(1)).findById(evaluationId);
+            verify(evaluationRepository, never()).save(any(Evaluation.class));
+        }
+
+        @Test
+        void shouldDeleteEvaluation() {
+            when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.of(evaluation));
+            doNothing().when(evaluationRepository).delete(evaluation);
+
+            assertDoesNotThrow(() -> evaluationService.deleteEvaluation(evaluationId));
+            verify(evaluationRepository, times(1)).findById(evaluationId);
+            verify(evaluationRepository, times(1)).delete(evaluation);
+        }
+
+        @Test
+        void shouldThrowExceptionWhenDeletingNonExistentEvaluation() {
+            when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.empty());
+
+            Exception exception = assertThrows(RuntimeException.class, () -> evaluationService.deleteEvaluation(evaluationId));
+
+            assertEquals("Evaluation not found with id: " + evaluationId, exception.getMessage());
+            verify(evaluationRepository, times(1)).findById(evaluationId);
+            verify(evaluationRepository, never()).delete(any(Evaluation.class));
+        }
         when(evaluationMapper.convertToDTO(evaluation)).thenReturn(evaluationDTO);
 
         EvaluationDTO updatedEvaluation = evaluationService.updateEvaluation(evaluationId, evaluationDTO);
@@ -163,35 +193,5 @@ class EvaluationServiceTest {
         verify(evaluationRepository, times(1)).save(any(Evaluation.class));
     }
 
-    @Test
-    void shouldThrowExceptionWhenUpdatingNonExistentEvaluation() {
-        when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.empty());
-
-        Exception exception = assertThrows(RuntimeException.class, () -> evaluationService.updateEvaluation(evaluationId, evaluationDTO));
-
-        assertEquals("Evaluation not found with id: " + evaluationId, exception.getMessage());
-        verify(evaluationRepository, times(1)).findById(evaluationId);
-        verify(evaluationRepository, never()).save(any(Evaluation.class));
-    }
-
-    @Test
-    void shouldDeleteEvaluation() {
-        when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.of(evaluation));
-        doNothing().when(evaluationRepository).delete(evaluation);
-
-        assertDoesNotThrow(() -> evaluationService.deleteEvaluation(evaluationId));
-        verify(evaluationRepository, times(1)).findById(evaluationId);
-        verify(evaluationRepository, times(1)).delete(evaluation);
-    }
-
-    @Test
-    void shouldThrowExceptionWhenDeletingNonExistentEvaluation() {
-        when(evaluationRepository.findById(evaluationId)).thenReturn(Optional.empty());
-
-        Exception exception = assertThrows(RuntimeException.class, () -> evaluationService.deleteEvaluation(evaluationId));
-
-        assertEquals("Evaluation not found with id: " + evaluationId, exception.getMessage());
-        verify(evaluationRepository, times(1)).findById(evaluationId);
-        verify(evaluationRepository, never()).delete(any(Evaluation.class));
-    }
+    @T
 }
