@@ -94,6 +94,13 @@ public class EvaluationMapper {
                 .birthHeight(dto.getBirthHeight())
                 .cried(dto.getCried())
                 .cyanosis(dto.getCyanosis())
+                .pregnancyExperience(dto.getPregnancyExperience())
+                .coupleRelationship(dto.getCoupleRelationship())
+                .maternalHealthConditions(dto.getMaternalHealthConditions())
+                .postpartumExperience(dto.getPostpartumExperience())
+                .motherBabyHealthPostpartum(dto.getMotherBabyHealthPostpartum())
+                .postpartumDepression(dto.getPostpartumDepression())
+                .firstDaysAtHome(dto.getFirstDaysAtHome())
                 .observations(dto.getObservations())
                 .build();
     }
@@ -260,6 +267,13 @@ public class EvaluationMapper {
                 .cried(entity.getCried())
                 .cyanosis(entity.getCyanosis())
                 .observations(entity.getObservations())
+                .pregnancyExperience(entity.getPregnancyExperience())
+                .coupleRelationship(entity.getCoupleRelationship())
+                .maternalHealthConditions(entity.getMaternalHealthConditions())
+                .postpartumExperience(entity.getPostpartumExperience())
+                .motherBabyHealthPostpartum(entity.getMotherBabyHealthPostpartum())
+                .postpartumDepression(entity.getPostpartumDepression())
+                .firstDaysAtHome(entity.getFirstDaysAtHome())
                 .build();
     }
 

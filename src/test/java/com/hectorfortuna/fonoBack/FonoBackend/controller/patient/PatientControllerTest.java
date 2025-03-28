@@ -46,7 +46,7 @@ class PatientControllerTest {
                 .birthDate("2005-06-15")
                 .patientAge("18")
                 .phoneNumber("(11) 98765-4321")
-                .career("Student")
+                .motherCareer("Student")
                 .build();
     }
 

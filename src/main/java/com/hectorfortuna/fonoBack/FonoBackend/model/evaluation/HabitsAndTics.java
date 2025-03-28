@@ -38,7 +38,7 @@ public class HabitsAndTics {
     private String thumbSuckingRemovalMethod;
 
     @Column(name = "bites_nails")
-    private Boolean bitesNails;
+    private String bitesNails;
 
     @Column(name = "nail_biting_hand", length = 255)
     private String nailBitingHand;

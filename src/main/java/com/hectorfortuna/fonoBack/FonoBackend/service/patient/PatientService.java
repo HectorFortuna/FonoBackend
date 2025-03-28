@@ -56,7 +56,11 @@ public class PatientService {
                 .birthDate(patientDTO.getBirthDate())
                 .patientAge(patientDTO.getPatientAge())
                 .phoneNumber(patientDTO.getPhoneNumber())
-                .career(patientDTO.getCareer())
+                .fatherCareer(patientDTO.getFatherCareer())
+                .motherCareer(patientDTO.getMotherCareer())
+                .medications(patientDTO.getMedications())
+                .livesWith(patientDTO.getLivesWith())
+                .caregiver(patientDTO.getCaregiver())
                 .school(patientDTO.getSchool())
                 .build();
 
@@ -103,12 +107,6 @@ public class PatientService {
 
         return convertToDTO(savedPatient);
     }
-
-
-
-
-
-
     /**
      * Atualiza um paciente existente
      */
@@ -124,7 +122,11 @@ public class PatientService {
         patient.setBirthDate(patientDTO.getBirthDate());
         patient.setPatientAge(patientDTO.getPatientAge());
         patient.setPhoneNumber(patientDTO.getPhoneNumber());
-        patient.setCareer(patientDTO.getCareer());
+        patient.setMotherCareer(patientDTO.getMotherCareer());
+        patient.setPatientName(patientDTO.getPatientName());
+        patient.setMedications(patientDTO.getMedications());
+        patient.setLivesWith(patientDTO.getLivesWith());
+        patient.setCaregiver(patientDTO.getCaregiver());
         patient.setSchool(patientDTO.getSchool());
 
         // ✅ Atualiza e vincula Siblings
@@ -195,7 +197,11 @@ public class PatientService {
                 .patientAge(patient.getPatientAge())
                 .phoneNumber(patient.getPhoneNumber())
                 .school(patient.getSchool())
-                .career(patient.getCareer())
+                .motherCareer(patient.getMotherCareer())
+                .fatherCareer(patient.getFatherCareer())
+                .medications(patient.getMedications())
+                .livesWith(patient.getLivesWith())
+                .caregiver(patient.getCaregiver())
                 .siblings(patient.getSiblings().stream()
                         .map(sibling -> SiblingsDTO.builder()
                                 .siblingsName(sibling.getSiblingsName())

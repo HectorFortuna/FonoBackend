@@ -73,6 +73,27 @@ public class Gestation {
     @Column(name = "cyanosis")
     private Boolean cyanosis;
 
+    @Column(name = "pregnancy_experience", length = 255)
+    private String pregnancyExperience;
+
+    @Column(name = "couple_relationship", length = 255)
+    private String coupleRelationship;
+
+    @Column(name = "maternal_health_conditions", length = 255)
+    private String maternalHealthConditions;
+
+    @Column(name = "postpartum_experience", length = 255)
+    private String postpartumExperience;
+
+    @Column(name ="mother_baby_health_postpartum", length = 255)
+    private String motherBabyHealthPostpartum;
+
+    @Column(name ="postpartum_depression", length = 255)
+    private String postpartumDepression;
+
+    @Column(name="first_days_home", length = 255)
+    private String firstDaysAtHome;
+
     @Column(name = "observations", length = 300)
     private String observations;
 }

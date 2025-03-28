@@ -48,7 +48,7 @@ class PatientServiceTest {
                 .birthDate("2005-06-15")
                 .patientAge("18")
                 .phoneNumber("(11) 98765-4321")
-                .career("Estudante")
+                .motherCareer("Estudante")
                 .siblings(siblings)
                 .address(address)
                 .build();
@@ -61,7 +61,7 @@ class PatientServiceTest {
                 .birthDate("2005-06-15")
                 .patientAge("18")
                 .phoneNumber("(11) 98765-4321")
-                .career("Estudante")
+                .motherCareer("Estudante")
                 .siblings(SiblingsDTO.builder().siblingsAge("20").build())
                 .address(AddressDTO.builder().address("Rua das Palmeiras, 123").build())
                 .build();

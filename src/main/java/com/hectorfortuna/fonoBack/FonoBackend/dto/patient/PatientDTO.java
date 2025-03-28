@@ -23,8 +23,16 @@ public class PatientDTO {
     private String patientAge;
     @JsonProperty("phone")
     private String phoneNumber;
-    @JsonProperty("career")
-    private String career;
+    @JsonProperty("motherCareer")
+    private String motherCareer;
+    @JsonProperty("fatherCareer")
+    private String fatherCareer;
+    @JsonProperty("medications")
+    private String medications;
+    @JsonProperty("livesWith")
+    private String livesWith;
+    @JsonProperty("caregiver")
+    private String caregiver;
     @JsonProperty("school")
     private String school;
 

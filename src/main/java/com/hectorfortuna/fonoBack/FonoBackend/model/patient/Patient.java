@@ -50,6 +50,18 @@ public class Patient {
     @Column(name = "school", length = 255)
     private String school;
 
-    @Column(name = "career", length = 255)
-    private String career;
+    @Column(name = "father_career", length = 255)
+    private String fatherCareer;
+
+    @Column(name = "mother_career", length = 255)
+    private String motherCareer;
+
+    @Column(name = "medications", length = 255)
+    private String medications;
+
+    @Column(name = "lives_with", length = 255)
+    private String livesWith;
+
+    @Column(name = "caregiver", length = 255)
+    private String caregiver;
 }

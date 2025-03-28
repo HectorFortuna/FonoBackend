@@ -25,4 +25,12 @@ public class GestationDTO {
     private Boolean cried;
     private Boolean cyanosis;
     private String observations;
+
+    private String pregnancyExperience;
+    private String coupleRelationship;
+    private String maternalHealthConditions;
+    private String postpartumExperience;
+    private String motherBabyHealthPostpartum;
+    private String postpartumDepression;
+    private String firstDaysAtHome;
 }
