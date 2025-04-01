@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 @Builder
 public class PathologicalHistoryDTO {
-    private Boolean physicalMalformationsOrDefects;
+    private Boolean physicalMalformations;
     private Boolean measles;
     private Boolean smallpox;
     private Boolean highFever;
-    private Boolean fallsOrBlows;
+    private Boolean fallsBlows;
     private String psychosomaticDisorders;
-    private Boolean tonsilsAndAdenoids;
+    private Boolean tonsilsAdenoids;
     private String operationsDone;
     private Boolean seesWell;
     private Boolean wearsGlasses;
@@ -20,14 +20,9 @@ public class PathologicalHistoryDTO {
     private String optometristResult;
     private Boolean hearingProblems;
     private String whichEar;
-    private String hearingProblemTimingAndCircumstance;
-    private Boolean prefersLoudSpeech;
-    private Boolean frequentlyHoarse;
-    private Boolean annoyedByNoise;
-    private Boolean speaksVeryLoudOrVerySoft;
-    private Boolean understandsWell;
-    private Boolean looksAtLipsWhenListening;
-    private String howToUnderstand;
-    private String attendedTherapy;
+    private String howUnderstands;
+    private String attendTherapy;
+    private String familyDevelopmentHistory;
+    private String familySurgeriesHospitalizations;
     private String observations;
 }

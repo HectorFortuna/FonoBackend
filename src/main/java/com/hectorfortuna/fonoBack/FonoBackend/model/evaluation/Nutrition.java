@@ -41,10 +41,28 @@ public class Nutrition {
     private Boolean vomiting;
 
     @Column(name = "forced_to_eat")
-    private Boolean forcedToEat;
+    private Boolean forcedEat;
 
     @Column(name = "current_feeding", length = 255)
     private String currentFeeding;
+
+    @Column(name = "weaning", length = 255)
+    private String weaning;
+
+    @Column(name = "bottle_feeding_age", length = 255)
+    private String bottleFeedingAge;
+
+    @Column(name ="solid_food_introduction_age", length = 255)
+    private String solidFoodIntroductionAge;
+
+    @Column(name ="accepts_different_textures")
+    private Boolean acceptsDifferentTextures;
+
+    @Column(name = "feeding_issues_description", length = 255)
+    private String feedingIssuesDescription;
+
+    @Column(name = "food_selectivity", length = 255)
+    private String foodSelectivity;
 
     @Column(name = "observations", length = 300)
     private String observations;

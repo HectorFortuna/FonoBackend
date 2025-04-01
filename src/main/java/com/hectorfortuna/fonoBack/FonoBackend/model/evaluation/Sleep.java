@@ -43,6 +43,30 @@ public class Sleep {
     @Column(name = "drools")
     private Boolean drools;
 
+    @Column(name = "baby_no_problem")
+    private Boolean asBabyNoProblems;
+
+    @Column(name = "baby_slept_alone")
+    private Boolean asBabySleptAlone;
+
+    @Column(name = "baby_shared_with", length = 255)
+    private String asBabySharedWith;
+
+    @Column(name = "baby_sleep_difficulties", length = 255)
+    private String asBabySleepDifficulties;
+
+    @Column(name = "current_no_problem")
+    private Boolean currentNoProblems;
+
+    @Column(name = "current_slept_alone")
+    private Boolean currentSleptAlone;
+
+    @Column(name = "current_shared_with", length = 255)
+    private String currentSharedWith;
+
+    @Column (name = "current_sleep_difficulties", length = 255)
+    private String currentSleepDifficulties;
+
     @Column(name = "observations", length = 300)
     private String observations;
 }

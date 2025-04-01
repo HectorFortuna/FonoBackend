@@ -43,6 +43,61 @@ public class HabitsAndTics {
     @Column(name = "nail_biting_hand", length = 255)
     private String nailBitingHand;
 
+    @Column(name = "aligns_objects")
+    private Boolean alignsObjects;
+
+    @Column(name = "plays_with_parts_only")
+    private Boolean playsWithPartsOnly;
+
+    @Column(name = "opens_and_closes_objects")
+    private Boolean opensAndClosesObjects;
+
+    @Column(name = "reaction_when_play_interrupted", length = 255)
+    private String reactionWhenPlayInterrupted;
+
+    @Column(name = "rigid_pretend_play")
+    private Boolean rigidPretendPlay;
+
+    @Column(name = "resists_routine_change")
+    private Boolean resistsRoutineChange;
+
+    @Column(name = "fixed_activity_sequence")
+    private Boolean fixedActivitySequence;
+
+    @Column(name = "reaction_to_interruption", length = 255)
+    private String reactionToInterruption;
+
+    @Column(name = "attached_to_unusual_objects")
+    private Boolean attachedToUnusualObjects;
+
+    @Column(name = "hand_near_face")
+    private Boolean handNearFace;
+
+    @Column(name = "hands_near_body")
+    private Boolean handsNearBody;
+
+    @Column(name = "body_swing")
+    private Boolean bodySwing;
+
+    @Column(name = "arm_flapping")
+    private Boolean armFlapping;
+
+    @Column(name = "fears", length = 255)
+    private String fears;
+
+    @Column(name = "sensory_interest")
+    private Boolean sensoryInterest;
+
+    @Column(name = "sound_sensitivity")
+    private Boolean soundSensitivity;
+
+    @Column(name = "inappropriate_touch")
+    private Boolean inappropriateTouch;
+
+    @Column(name = "hyperactivity")
+    private Boolean hyperactivity;
+
+
     @Column(name = "observations", length = 255)
     private String observations;
 }

@@ -14,5 +14,13 @@ public class SleepDTO {
     private Boolean sleepwalking;
     private Boolean sleepsWithMouthOpen;
     private Boolean drools;
+    private Boolean asBabyNoProblems;
+    private Boolean asBabySleptAlone;
+    private String asBabySharedWith;
+    private String asBabySleepDifficulties;
+    private Boolean currentNoProblems;
+    private Boolean currentSleptAlone;
+    private String currentSharedWith;
+    private String currentSleepDifficulties;
     private String observations;
 }

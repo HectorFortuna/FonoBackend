@@ -20,7 +20,7 @@ public class PathologicalHistory {
     private UUID id;
 
     @Column(name = "physical_malformations_or_defects")
-    private Boolean physicalMalformationsOrDefects;
+    private Boolean physicalMalformations;
 
     @Column(name = "measles")
     private Boolean measles;
@@ -32,13 +32,13 @@ public class PathologicalHistory {
     private Boolean highFever;
 
     @Column(name = "falls_or_blows")
-    private Boolean fallsOrBlows;
+    private Boolean fallsBlows;
 
     @Column(name = "psychosomatic_disorders")
     private String psychosomaticDisorders;
 
     @Column(name = "tonsils_and_adenoids")
-    private Boolean tonsilsAndAdenoids;
+    private Boolean tonsilsAdenoids;
 
     @Column(name = "operations_done")
     private String operationsDone;
@@ -61,32 +61,17 @@ public class PathologicalHistory {
     @Column(name = "which_ear", length = 255)
     private String whichEar;
 
-    @Column(name = "hearing_problem_timing_and_circumstance", length = 255)
-    private String hearingProblemTimingAndCircumstance;
-
-    @Column(name = "prefers_loud_speech")
-    private Boolean prefersLoudSpeech;
-
-    @Column(name = "frequently_hoarse")
-    private Boolean frequentlyHoarse;
-
-    @Column(name = "annoyed_by_noise")
-    private Boolean annoyedByNoise;
-
-    @Column(name = "speaks_very_loud_or_very_soft")
-    private Boolean speaksVeryLoudOrVerySoft;
-
-    @Column(name = "understands_well")
-    private Boolean understandsWell;
-
-    @Column(name = "looks_at_lips_when_listening")
-    private Boolean looksAtLipsWhenListening;
-
     @Column(name = "how_to_understand", length = 255)
-    private String howToUnderstand;
+    private String howUnderstands;
 
     @Column(name = "attended_therapy")
-    private String attendedTherapy;
+    private String attendTherapy;
+
+    @Column(name = "family_development_history", length = 255)
+    private String familyDevelopmentHistory;
+
+    @Column(name="family_surgeries_hospitalization", length = 255)
+    private String familySurgeriesHospitalizations;
 
     @Column(name = "observations", length = 255)
     private String observations;

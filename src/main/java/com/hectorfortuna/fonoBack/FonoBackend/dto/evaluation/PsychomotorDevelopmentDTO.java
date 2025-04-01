@@ -16,7 +16,7 @@ public class PsychomotorDevelopmentDTO {
     private Boolean canJump;
     private String walkingDefects;
     private String goodDirectionSense;
-    private Boolean analAndNocturnalSphincterControl;
+    private Boolean sphincterControl;
     private Boolean bumpsIntoThings;
     private Boolean dropsThingsFromHands;
     private Boolean agile;
@@ -24,4 +24,19 @@ public class PsychomotorDevelopmentDTO {
     private Boolean usedBoots;
     private String dailyActivities;
     private String observations;
+    private Boolean walksOnTiptoes;
+    private Boolean swingsWhenWalking;
+    private Boolean hasBalanceIssues;
+    private Boolean difficultyRunningClimbing;
+    private Boolean postureProblems;
+    private Boolean difficultyWithObjects;
+    private Boolean difficultyPlaying;
+    private String motorExamples;
+    private Boolean bathAlone;
+    private Boolean brushesTeethAlone;
+    private Boolean cleansSelf;
+    private Boolean difficultyWithHygieneSequence;
+    private Boolean dressesSelf;
+    private Boolean buttonsClothes;
+    private Boolean tiesShoes;
 }

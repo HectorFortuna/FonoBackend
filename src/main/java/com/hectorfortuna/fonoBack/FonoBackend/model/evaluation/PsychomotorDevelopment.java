@@ -50,7 +50,7 @@ public class PsychomotorDevelopment {
     private String goodDirectionSense;
 
     @Column(name = "anal_and_nocturnal_sphincter_control")
-    private Boolean analAndNocturnalSphincterControl;
+    private Boolean sphincterControl;
 
     @Column(name = "bumps_into_things")
     private Boolean bumpsIntoThings;
@@ -69,6 +69,51 @@ public class PsychomotorDevelopment {
 
     @Column(name = "daily_activities", length = 255)
     private String dailyActivities;
+
+    @Column(name = "walks_on_tiptoes")
+    private Boolean walksOnTiptoes;
+
+    @Column(name = "swings_when_walking")
+    private Boolean swingsWhenWalking;
+
+    @Column(name = "has_balance_issues")
+    private Boolean hasBalanceIssues;
+
+    @Column(name = "difficulty_running_climbing")
+    private Boolean difficultyRunningClimbing;
+
+    @Column(name = "posture_problems")
+    private Boolean postureProblems;
+
+    @Column(name = "difficulty_with_objects")
+    private Boolean difficultyWithObjects;
+
+    @Column(name = "difficulty_playing")
+    private Boolean difficultyPlaying;
+
+    @Column(name = "motor_examples", length = 255)
+    private String motorExamples;
+
+    @Column(name = "bath_alone")
+    private Boolean bathAlone;
+
+    @Column(name = "brushes_teeth_alone")
+    private Boolean brushesTeethAlone;
+
+    @Column(name = "cleans_self")
+    private Boolean cleansSelf;
+
+    @Column(name = "difficulty_with_hygiene_sequence")
+    private Boolean difficultyWithHygieneSequence;
+
+    @Column(name = "dresses_self")
+    private Boolean dressesSelf;
+
+    @Column(name = "buttons_clothes")
+    private Boolean buttonsClothes;
+
+    @Column(name = "ties_shoes")
+    private Boolean tiesShoes;
 
     @Column(name = "observations", length = 255)
     private String observations;

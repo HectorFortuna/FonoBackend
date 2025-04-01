@@ -14,27 +14,24 @@ public class HabitsAndTicsDTO {
     private String thumbSuckingRemovalMethod;
     private String bitesNails;
     private String nailBitingHand;
+    private Boolean alignsObjects;
+    private Boolean playsWithPartsOnly;
+    private Boolean opensAndClosesObjects;
+    private String reactionWhenPlayInterrupted;
+    private Boolean rigidPretendPlay;
+    private Boolean resistsRoutineChange;
+    private Boolean fixedActivitySequence;
+    private String reactionToInterruption;
+    private Boolean attachedToUnusualObjects;
+    private Boolean handNearFace;
+    private Boolean handsNearBody;
+    private Boolean bodySwing;
+    private Boolean armFlapping;
+    private String fears;
+    private Boolean sensoryInterest;
+    private Boolean soundSensitivity;
+    private Boolean inappropriateTouch;
+    private Boolean hyperactivity;
     private String observations;
-
-    @Override
-    public String toString() {
-        return "Usou chupeta: " + format(usedPacifier) + ". " +
-                "Método de remoção da chupeta: " + format(pacifierRemovalMethod) + ". " +
-                "Chupou dedo: " + formatBoolean(suckedThumb) + ". " +
-                "Mão que chupava: " + format(thumbHand) + ". " +
-                "Duração do hábito de chupar dedo: " + format(thumbSuckingDuration) + ". " +
-                "Método de remoção do hábito: " + format(thumbSuckingRemovalMethod) + ". " +
-                "Rói unhas: " + format(bitesNails) + ". " +
-                "Mão que rói as unhas: " + format(nailBitingHand) + ". " +
-                "Observações: " + format(observations) + ".";
-    }
-
-    private String format(String value) {
-        return value != null && !value.trim().isEmpty() ? value : "Não informado";
-    }
-
-    private String formatBoolean(Boolean value) {
-        return value == null ? "Não informado" : (value ? "Sim" : "Não");
-    }
 
 }
