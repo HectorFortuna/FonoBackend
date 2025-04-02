@@ -10,23 +10,23 @@ spring:
     hikari:
       maximum-pool-size: 10
 
-
-    jpa:
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: true
-      properties:
-        hibernate:
-          format_sql: true
-    h2:
-      console:
-        enabled: true
+        format_sql: true
 
-    server:
-      port: 8080
+  h2:
+    console:
+      enabled: true
 
-    logging:
-      level:
-        org.springframework: INFO
-        com.hectorfortuna.fonoBack: DEBUG
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework: INFO
+    com.hectorfortuna.fonoBack: DEBUG

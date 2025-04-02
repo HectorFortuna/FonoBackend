@@ -1,8 +1,8 @@
 package com.hectorfortuna.fonoBack.service;
 
 
-import com.hectorfortuna.fonoBack.dto.AuthenticationRequest;
-import com.hectorfortuna.fonoBack.dto.AuthenticationResponse;
+import com.hectorfortuna.fonoBack.dto.AuthRequest;
+import com.hectorfortuna.fonoBack.dto.AuthResponse;
 import com.hectorfortuna.fonoBack.dto.RegisterRequest;
 import com.hectorfortuna.fonoBack.enums.Role;
 import com.hectorfortuna.fonoBack.model.User;
@@ -22,7 +22,7 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthResponse register(RegisterRequest request) {
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
@@ -32,16 +32,16 @@ public class AuthService {
 
         userRepository.save(user);
 
-        return new AuthenticationResponse(jwtService.generateToken(user));
+        return new AuthResponse(jwtService.generateToken(user));
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthResponse authenticate(AuthRequest request) {
         authManager.authenticate(new UsernamePasswordAuthenticationToken(
                 request.getEmail(), request.getPassword()));
 
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
 
-        return new AuthenticationResponse(jwtService.generateToken(user));
+        return new AuthResponse(jwtService.generateToken(user));
     }
 }

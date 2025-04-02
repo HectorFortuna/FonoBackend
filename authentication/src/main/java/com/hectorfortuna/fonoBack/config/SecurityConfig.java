@@ -19,12 +19,14 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.*;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
 
     private final UserRepository userRepository;
+    private final com.hectorfortuna.fonoBack.security.JwtAuthFilter jwtAuthFilter;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -41,8 +43,10 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/auth/login").permitAll() // login continua aberto
+                        .requestMatchers("/api/auth/register").permitAll() // só ADMIN pode cadastrar
+                        .requestMatchers(HttpMethod.GET, "/api/**").authenticated() // leitura geral autenticada
+                        .anyRequest().denyAll() // tudo que não foi mapeado, é negado
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
