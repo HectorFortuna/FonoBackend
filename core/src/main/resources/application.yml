@@ -3,9 +3,9 @@ spring:
     name: FonoBackend
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/register_db
-    username: postgres
-    password: admin
+    url: jdbc:postgresql://fono-db.cb4isgooqm7u.us-east-2.rds.amazonaws.com:5432/fono_db
+    username: master
+    password: Newqac-simjuf-mybvi4
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
